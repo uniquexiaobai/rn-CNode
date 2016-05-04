@@ -3,7 +3,9 @@
  * https://github.com/facebook/react-native
  */
 
-import Menu from './android_views/menu';
+import Menu from './android_views/menu/menu';          // 左抽屉菜单
+import TopicList from './android_views/topic/topic_list';   // 话题列表
+import Header from './android_views/header';
 
 import React, {
   AppRegistry,
@@ -22,29 +24,15 @@ class CNode extends Component {
         drawerPosition={DrawerLayoutAndroid.positions.Left}
         renderNavigationView={() => <Menu />}
       >
-        <View style={styles.container}>
-          <Text style={styles.welcome}>
-            Welcome to React Native!
-          </Text>
-
-        </View>
+        <Header />
+        <TopicList />
       </DrawerLayoutAndroid>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
+
 });
 
 AppRegistry.registerComponent('CNode', () => CNode);

@@ -3,7 +3,7 @@
  */
 
 import MenuHeader from './menu_header';
-import MenuMain from './menu_main';
+import MenuList from './menu_list';
 
 import React, {
   Component,
@@ -18,8 +18,8 @@ export default class extends Component {
 
     return (
       <View>
-        <MenuHeader/>
-        <MenuMain/>
+        <MenuHeader />
+        <MenuList />
       </View>
     );
 

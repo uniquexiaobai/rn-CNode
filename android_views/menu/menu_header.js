@@ -17,7 +17,7 @@ export default class extends Component {
     return (
       <View style={styles.menu_header}>
         <View style={styles.left}>
-          <Image source={require('./img/logo.jpg')} style={styles.user_logo} />
+          <Image source={require('../img/logo.jpg')} style={styles.user_logo} />
           <Text style={styles.username} onPress={() => alert('个人主页')}>uniquexiaobai</Text>
           <Text style={styles.grade}>积分：0</Text>
         </View>
