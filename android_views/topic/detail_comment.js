@@ -1,15 +1,13 @@
 /**
- * 话题列表
+ * 话题详情页 - 评论
  */
-
-import TopicItem from './topic_item';
-import Header from '../header';
 
 import React, {
   Component,
   StyleSheet,
   Text,
   View,
+  Image,
 } from 'react-native';
 
 export default class extends Component {
@@ -17,13 +15,7 @@ export default class extends Component {
   render() {
     return (
       <View>
-        <Header title={'全部'}/>
-
-        <TopicItem />
-        <TopicItem />
-        <TopicItem />
-        <TopicItem />
-
+        <Text>评论页</Text>
       </View>
     );
   }
@@ -31,5 +23,6 @@ export default class extends Component {
 };
 
 const styles = StyleSheet.create({
+
 
 });

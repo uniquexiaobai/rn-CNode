@@ -19,8 +19,9 @@ export default class extends Component {
       <ToolbarAndroid
         navIcon={require('./img/toolbar.png')}
         style={styles.toolbar}
-        title="全部"
+        title={this.props.title}
         titleColor="#fff"
+        onIconClicked={() => alert('ok')}
       >
 
       </ToolbarAndroid>

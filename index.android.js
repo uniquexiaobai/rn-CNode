@@ -5,7 +5,7 @@
 
 import Menu from './android_views/menu/menu';          // 左抽屉菜单
 import TopicList from './android_views/topic/topic_list';   // 话题列表
-import Header from './android_views/header';
+import TopicDetail from './android_views/topic/topic_detail';   // 话题列表
 
 import React, {
   AppRegistry,
@@ -24,8 +24,7 @@ class CNode extends Component {
         drawerPosition={DrawerLayoutAndroid.positions.Left}
         renderNavigationView={() => <Menu />}
       >
-        <Header />
-        <TopicList />
+        <TopicDetail />
       </DrawerLayoutAndroid>
     );
   }
