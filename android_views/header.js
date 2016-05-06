@@ -7,24 +7,24 @@ import React, {
   StyleSheet,
   Text,
   View,
+  TouchableHighlight,
+  Image,
 } from 'react-native';
-
-import ToolbarAndroid from 'ToolbarAndroid';
 
 export default class extends Component {
 
   render() {
     return (
 
-      <ToolbarAndroid
-        navIcon={require('./img/toolbar.png')}
-        style={styles.toolbar}
-        title={this.props.title}
-        titleColor="#fff"
-        onIconClicked={() => alert('ok')}
-      >
-
-      </ToolbarAndroid>
+      <View style={styles.toolbar}>
+        <TouchableHighlight onPress={this.props.openDrawerClick}>
+          <Image
+            style={styles.toolbar_icon}
+            source={this.props.icon}
+          />
+        </TouchableHighlight>
+        <Text style={styles.toolbar_title}>{this.props.title}</Text>
+      </View>
 
     );
   }
@@ -33,7 +33,19 @@ export default class extends Component {
 
 const styles = StyleSheet.create({
   toolbar: {
-    height: 55,
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 15,
     backgroundColor: '#333',
-  }
-})
+  },
+  toolbar_icon: {
+    width: 24,
+    height: 24,
+    marginRight: 20,
+  },
+  toolbar_title: {
+    color: '#F2F2F2',
+    fontSize: 21,
+    fontWeight: 'bold',
+  },
+});

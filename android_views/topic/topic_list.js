@@ -17,7 +17,12 @@ export default class extends Component {
   render() {
     return (
       <View>
-        <Header title={'全部'}/>
+
+        <Header
+          title={'全部'}
+          icon={require('../img/toolbar.png')}
+          openDrawerClick={this.props.openDrawerClick}
+        />
 
         <TopicItem />
         <TopicItem />

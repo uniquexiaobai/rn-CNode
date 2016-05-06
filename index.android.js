@@ -17,15 +17,23 @@ import React, {
 } from 'react-native';
 
 class CNode extends Component {
+  openDrawerClick() {
+    this.refs.drawer.openDrawer();
+  }
   render() {
     return (
+
       <DrawerLayoutAndroid
+        ref="drawer"
         drawerWidth={300}
         drawerPosition={DrawerLayoutAndroid.positions.Left}
         renderNavigationView={() => <Menu />}
       >
-        <TopicDetail />
+
+        <TopicList openDrawerClick={this.openDrawerClick.bind(this)}/>
+
       </DrawerLayoutAndroid>
+
     );
   }
 }

@@ -19,8 +19,12 @@ export default class extends Component {
   render() {
     return (
       <View>
-      
-        <Header title={'话题'}/>
+
+        <Header
+          title={'话题'}
+          icon={require('../img/back.png')}
+          openDrawerClick={this.props.openDrawerClick}
+        />
 
         <DetailContent />
 
