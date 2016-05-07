@@ -37,11 +37,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 15,
     backgroundColor: '#333',
+    height: 58,
   },
   toolbar_icon: {
-    width: 24,
-    height: 24,
-    marginRight: 20,
+    width: 23,
+    height: 23,
+    marginRight: 22,
   },
   toolbar_title: {
     color: '#F2F2F2',

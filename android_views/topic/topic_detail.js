@@ -2,7 +2,7 @@
  * 话题详情页
  */
 
-import Header from '../header';
+import Header from '../common/header';
 import DetailContent from './detail_content';
 import DetailComment from './detail_comment';
 
