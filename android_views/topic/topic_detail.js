@@ -2,6 +2,7 @@
  * 话题详情页
  */
 
+import Util from '../common/util';
 import Header from '../common/header';
 import DetailContent from './detail_content';
 import DetailComment from './detail_comment';
@@ -11,6 +12,7 @@ import React, {
   StyleSheet,
   Text,
   View,
+  ScrollView,
   Image,
 } from 'react-native';
 
@@ -18,7 +20,7 @@ export default class extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{flex: 1}}>
 
         <Header
           title={'话题'}
@@ -26,9 +28,13 @@ export default class extends Component {
           openDrawerClick={this.props.openDrawerClick}
         />
 
-        <DetailContent />
+        <ScrollView style={styles.scrollView}>
 
-        <DetailComment />
+          <DetailContent topic_id={this.props.topic_id} />
+
+          <DetailComment topic_id={this.props.topic_id} />
+
+        </ScrollView>
 
       </View>
     );
@@ -38,9 +44,9 @@ export default class extends Component {
 
 const styles = StyleSheet.create({
 
-  topic_title: {
-    color: '#212121',
-    fontSize:16,
-    marginLeft: 15,
-  },
+  scrollView: {
+    height: Util.size.height - 80,
+    width: Util.size.width,
+  }
+
 });

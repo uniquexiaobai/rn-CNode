@@ -38,9 +38,12 @@ export default class extends Component {
   }
 
   // 切换路由到详情页
-  goTopicDetail() {
+  goTopicDetail(id) {
     this.props.navigator.push({
-      component: TopicDetail
+      component: TopicDetail,
+      passProps: {
+        topic_id: id
+      }
     });
   }
 

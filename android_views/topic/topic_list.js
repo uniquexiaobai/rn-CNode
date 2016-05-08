@@ -66,7 +66,7 @@ export default class extends Component {
   componentDidMount() {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     var that = this;
-    var topicsURL = 'http://cnodejs.org/api/v1/topics?tab=all&page=1';
+    var url = 'http://cnodejs.org/api/v1/topics?tab=all&page=1';
 
     // 数据加载前 loading 动画
     this.setState({
@@ -74,7 +74,7 @@ export default class extends Component {
     });
 
     // get topics 信息
-    Util.get(topicsURL, function(data) {
+    Util.get(url, function(data) {
 
       if(!data.success) {
         return alert('数据加载出错！');
@@ -99,7 +99,7 @@ export default class extends Component {
 
 const styles = StyleSheet.create({
   scrollView: {
-    flex: 1,
-    height: Util.size.height,
+    height: Util.size.height - 80,
+    width: Util.size.width,
   },
 });
