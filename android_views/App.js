@@ -4,7 +4,8 @@
 
 import Menu from './menu/menu';          // 左抽屉菜单
 import TopicList from './topic/topic_list';   // 话题列表
-import TopicDetail from './topic/topic_detail';   // 话题列表
+import TopicDetail from './topic/topic_detail';   // 话题详情
+import User from './user/user';   // 用户详情
 
 import React, {
   AppRegistry,
@@ -37,12 +38,22 @@ export default class extends Component {
     return false;
   }
 
-  // 切换路由到详情页
+  // 切换路由到 topic 详情页
   goTopicDetail(id) {
     this.props.navigator.push({
       component: TopicDetail,
       passProps: {
         topic_id: id
+      }
+    });
+  }
+
+  // 切换路由到 user 详情页
+  goUserDetail(id) {
+    this.props.navigator.push({
+      component: User,
+      passProps: {
+        author_id: id
       }
     });
   }
@@ -64,6 +75,7 @@ export default class extends Component {
         <TopicList
           openDrawerClick={this.openDrawerClick.bind(this)}
           goTopicDetail={this.goTopicDetail.bind(this)}
+          goUserDetail={this.goUserDetail.bind(this)}
         />
 
       </DrawerLayoutAndroid>

@@ -29,7 +29,7 @@ export default {
    */
   loading: <ProgressBarAndroid
     styleAttr="Inverse"
-    color="red"
+    color="#77B800"
   />,
 
   /**

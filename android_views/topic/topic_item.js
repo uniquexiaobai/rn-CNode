@@ -73,11 +73,15 @@ export default class extends Component {
           </View>
 
           <View style={styles.topic_item_bottom}>
-
-            <Image
-              source={{uri: this.props.topic.author.avatar_url}}
-              style={styles.author_avatar}
-            />
+            <TouchableHighlight
+              underlayColor='#fff'
+              onPress={this.props.goUserDetail.bind(this, this.props.topic.author_id)}
+            >
+              <Image
+                source={{uri: this.props.topic.author.avatar_url}}
+                style={styles.author_avatar}
+              />
+            </TouchableHighlight>
 
             <View style={styles.topic_item_center}>
               <Text style={[styles.author_name, styles.fontSize13]}>{this.props.topic.author.loginname}</Text>

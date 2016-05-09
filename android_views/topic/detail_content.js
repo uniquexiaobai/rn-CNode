@@ -9,6 +9,7 @@ import React, {
   Text,
   View,
   WebView,
+  TouchableHighlight,
   Image,
 } from 'react-native';
 
@@ -36,10 +37,15 @@ export default class extends Component {
 
               <View style={styles.Section2}>
 
-                <Image
-                  source={{uri: this.state.topic.author.avatar_url}}
-                  style={styles.author_avatar}
-                />
+                <TouchableHighlight
+                  underlayColor='#fff'
+                  onPress={this.props.goUserDetail.bind(this, this.state.topic.author_id)}
+                >
+                  <Image
+                    source={{uri: this.state.topic.author.avatar_url}}
+                    style={styles.author_avatar}
+                  />
+                </TouchableHighlight>
 
                 <View style={styles.topic_item_center}>
                   <View style={styles.detail_center}>

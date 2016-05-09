@@ -17,7 +17,10 @@ export default class extends Component {
     return (
 
       <View style={styles.toolbar}>
-        <TouchableHighlight onPress={this.props.openDrawerClick}>
+        <TouchableHighlight
+          underlayColor="#333"
+          onPress={this.props.onIconClicked}
+        >
           <Image
             style={styles.toolbar_icon}
             source={this.props.icon}

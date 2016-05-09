@@ -33,7 +33,7 @@ export default class extends Component {
         <Header
           title={'全部'}
           icon={require('../img/toolbar.png')}
-          openDrawerClick={this.props.openDrawerClick}
+          onIconClicked={this.props.openDrawerClick}
         />
 
         <ScrollView style={styles.scrollView}>
@@ -58,7 +58,11 @@ export default class extends Component {
    */
   _renderRow(topic) {
     return (
-      <TopicItem topic={topic} goTopicDetail={this.props.goTopicDetail}/>
+      <TopicItem
+        topic={topic}
+        goTopicDetail={this.props.goTopicDetail}
+        goUserDetail={this.props.goUserDetail}
+      />
     );
   }
 
