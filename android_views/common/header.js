@@ -18,7 +18,8 @@ export default class extends Component {
 
       <View style={styles.toolbar}>
         <TouchableHighlight
-          underlayColor="#333"
+          underlayColor="#6C6A67"
+          style={{borderRadius: 20, padding: 5}}
           onPress={this.props.onIconClicked}
         >
           <Image
@@ -45,11 +46,11 @@ const styles = StyleSheet.create({
   toolbar_icon: {
     width: 23,
     height: 23,
-    marginRight: 22,
   },
   toolbar_title: {
     color: '#F2F2F2',
     fontSize: 21,
     fontWeight: 'bold',
+    marginLeft: 22,
   },
 });

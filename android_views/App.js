@@ -49,11 +49,11 @@ export default class extends Component {
   }
 
   // 切换路由到 user 详情页
-  goUserDetail(id) {
+  goUserDetail(name) {
     this.props.navigator.push({
       component: User,
       passProps: {
-        author_id: id
+        author_name: name
       }
     });
   }

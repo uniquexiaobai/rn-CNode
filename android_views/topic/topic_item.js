@@ -2,6 +2,8 @@
  * 话题列表项
  */
 
+import Util from '../common/util';
+
 import React, {
   Component,
   StyleSheet,
@@ -75,7 +77,7 @@ export default class extends Component {
           <View style={styles.topic_item_bottom}>
             <TouchableHighlight
               underlayColor='#fff'
-              onPress={this.props.goUserDetail.bind(this, this.props.topic.author_id)}
+              onPress={this.props.goUserDetail.bind(this, this.props.topic.author.loginname)}
             >
               <Image
                 source={{uri: this.props.topic.author.avatar_url}}
@@ -85,7 +87,7 @@ export default class extends Component {
 
             <View style={styles.topic_item_center}>
               <Text style={[styles.author_name, styles.fontSize13]}>{this.props.topic.author.loginname}</Text>
-              <Text style={[styles.topic_createAt, styles.fontSize13]}>创建于：{new Date(this.props.topic.create_at).toLocaleDateString()}</Text>
+              <Text style={[styles.topic_createAt, styles.fontSize13]}>创建于：{Util.getFormatDate(this.props.topic.create_at)}</Text>
             </View>
 
             <View style={styles.topic_item_right}>

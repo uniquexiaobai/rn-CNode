@@ -39,7 +39,7 @@ export default class extends Component {
 
                 <TouchableHighlight
                   underlayColor='#fff'
-                  onPress={this.props.goUserDetail.bind(this, this.state.topic.author_id)}
+                  onPress={this.props.goUserDetail.bind(this, this.state.topic.author.loginname)}
                 >
                   <Image
                     source={{uri: this.state.topic.author.avatar_url}}

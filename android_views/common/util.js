@@ -11,6 +11,13 @@ import React, {
 
 export default {
 
+  // 将事件对象格式化成 2015-03-21 的形式
+  getFormatDate(d) {
+    var date = new Date(d).toLocaleDateString();
+    date = date.replace(/\//g, '-');
+    return '20' + date;
+  },
+
   /**
    * 获取屏幕最小线宽
    */
