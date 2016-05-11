@@ -10,6 +10,11 @@ import React, {
 } from 'react-native';
 
 export default {
+  
+  // 处理 toolbar 中返回按钮 press 事件，仅用于 menu 中
+  navigationBack(navigator) {
+    navigator.pop();
+  },
 
   // 将事件对象格式化成 2015-03-21 的形式
   getFormatDate(d) {

@@ -19,11 +19,6 @@ import React, {
 
 export default class extends Component {
 
-  // 处理 toolbar 中返回按钮 press 事件
-  navigationBack() {
-    this.props.navigator.pop();
-  }
-
   // 切换路由到 user 详情页
   goUserDetail(name) {
     this.props.navigator.push({
@@ -41,7 +36,7 @@ export default class extends Component {
         <Header
           title={'话题'}
           icon={require('../img/back.png')}
-          onIconClicked={this.navigationBack.bind(this)}
+          onIconClicked={Util.navigationBack.bind(this, this.props.navigator)}
         />
 
         <ScrollView style={styles.scrollView}>

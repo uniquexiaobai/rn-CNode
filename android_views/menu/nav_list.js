@@ -24,9 +24,9 @@ export default class extends Component {
         <NavItem name={'问答'} source={require('../img/wenda.png')}/>
         <NavItem name={'招聘'} source={require('../img/zhaopin.png')}/>
         <View style={styles.line}></View>
-        <NavItem name={'消息'} source={require('../img/xiaoxi.png')}/>
-        <NavItem name={'设置'} source={require('../img/shezhi.png')}/>
-        <NavItem name={'关于'} source={require('../img/guanyu.png')}/>
+        <NavItem name={'消息'} source={require('../img/xiaoxi.png')} goMenuItem={this.props.goMenuItem} />
+        <NavItem name={'设置'} source={require('../img/shezhi.png')} goMenuItem={this.props.goMenuItem} />
+        <NavItem name={'关于'} source={require('../img/guanyu.png')} goMenuItem={this.props.goMenuItem} />
       </View>
     );
 

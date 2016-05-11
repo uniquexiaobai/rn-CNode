@@ -12,13 +12,17 @@ import React, {
 } from 'react-native';
 
 export default class extends Component {
+  
+  goMenuItem(tabName) {
+    this.props.goMenuItem(tabName);
+  }
 
   render() {
 
     return (
       <TouchableHighlight
-        onPress={() => alert('nav_item')}
-        underlayColor="blue"
+        onPress={this.goMenuItem.bind(this, this.props.name)}
+        underlayColor="#eee"
       >
         <View style={styles.nav_item}>
           <Image source={this.props.source} style={styles.nav_icon} />

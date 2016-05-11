@@ -27,11 +27,6 @@ export default class extends Component {
 
   }
 
-  // 处理 toolbar 中返回按钮 press 事件
-  navigationBack() {
-    this.props.navigator.pop();
-  }
-
   render() {
     return (
 
@@ -39,7 +34,7 @@ export default class extends Component {
         {
           this.state.show
           ?
-            <UserInfo user={this.state.user} navigationBack={this.navigationBack.bind(this)}/>
+            <UserInfo user={this.state.user} navigationBack={Util.navigationBack.bind(this, this.props.navigator)}/>
           : Util.loading
         }
         <Text>用户详情页</Text>

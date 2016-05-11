@@ -57,9 +57,17 @@ export default class extends Component {
       }
     });
   }
-
+  
+  // 点击主页面 toolbar 的菜单 icon 图标触发
   openDrawerClick() {
     this.refs.drawer.openDrawer();
+  }
+  
+  /**
+   * 关闭抽屉菜单
+   */
+  cloneDrawer() {
+    this.refs.drawer.closeDrawer();
   }
 
   render() {
@@ -69,7 +77,7 @@ export default class extends Component {
         ref="drawer"
         drawerWidth={300}
         drawerPosition={DrawerLayoutAndroid.positions.Left}
-        renderNavigationView={() => <Menu />}
+        renderNavigationView={() => <Menu navigator={this.props.navigator} cloneDrawer={this.cloneDrawer.bind(this)}/>}
       >
 
         <TopicList
