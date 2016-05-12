@@ -16,13 +16,20 @@ import React, {
 } from 'react-native';
 
 export default class extends Component {
+  
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.activeTab !== this.props.activeTab) {
+      this.setState({tab: this.props.activeTab});
+    }
+  }
 
   constructor(props) {
     super(props);
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       topicsSource: ds.cloneWithRows([]),
-      show: false
+      show: false,
+      tab: 'all'
     };
   }
 
@@ -65,12 +72,13 @@ export default class extends Component {
       />
     );
   }
+  
 
-  // 请求 topics 数据
-  componentDidMount() {
+  
+  getData() {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     var that = this;
-    var url = 'http://cnodejs.org/api/v1/topics?tab=all&page=1';
+    var url = 'http://cnodejs.org/api/v1/topics?tab=' + this.state.tab + '&page=1';
 
     // 数据加载前 loading 动画
     this.setState({
@@ -96,6 +104,12 @@ export default class extends Component {
       alert(err);
 
     });
+  }
+
+  // 请求 topics 数据
+  componentDidMount() {
+    
+    this.getData();
 
   }
 

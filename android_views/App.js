@@ -18,6 +18,20 @@ import React, {
 } from 'react-native';
 
 export default class extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeTab: 'all'               // 此状态控制 tab 切换
+    };
+  }
+  
+  /**
+   * 切换 tab，更改 topic_list 中请求的url
+   */
+  switchTab(tab) {
+    this.setState({activeTab: tab});
+  }
 
   componentDidMount() {
     BackAndroid.addEventListener('hardwareBackPress', this.backAndroidPress.bind(this));
@@ -77,13 +91,14 @@ export default class extends Component {
         ref="drawer"
         drawerWidth={300}
         drawerPosition={DrawerLayoutAndroid.positions.Left}
-        renderNavigationView={() => <Menu navigator={this.props.navigator} cloneDrawer={this.cloneDrawer.bind(this)}/>}
+        renderNavigationView={() => <Menu switchTab={this.switchTab.bind(this)} navigator={this.props.navigator} cloneDrawer={this.cloneDrawer.bind(this)}/>}
       >
 
         <TopicList
           openDrawerClick={this.openDrawerClick.bind(this)}
           goTopicDetail={this.goTopicDetail.bind(this)}
           goUserDetail={this.goUserDetail.bind(this)}
+          activeTab={this.state.activeTab}
         />
 
       </DrawerLayoutAndroid>

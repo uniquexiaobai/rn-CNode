@@ -19,17 +19,35 @@ import React, {
 export default class extends Component {
   
   // 点击菜单 item 后跳转到相应的页面
-  goMenuItem(name) {
+  goMenuItem(tabName, isTop) {
+    
     var component;
-    switch(name) {
-      case '消息': component = Message; break;
-      case '设置': component = Setting; break;
-      case '关于': component = About; break;
+    
+    if(isTop) {
+      var t = 'all';
+      switch(tabName) {
+        case '全部': t= 'all'; break;
+        case '精华': t = 'good'; break;
+        case '分享': t = 'share'; break;
+        case '问答': t = 'ask'; break;
+        case '招聘': t = 'job'; break;
+      }
+      this.props.switchTab(t);
     }
-    this.props.navigator.push({
-      component: component
-    });
+    
+    else {
+      switch(tabName) {
+        case '消息': component = Message; break;
+        case '设置': component = Setting; break;
+        case '关于': component = About; break;
+      }
+      this.props.navigator.push({
+        component: component
+      });
+    }
+    
     this.props.cloneDrawer();           // 关闭抽屉菜单
+    
   }
 
   render() {

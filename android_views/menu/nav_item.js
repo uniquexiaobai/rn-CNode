@@ -13,20 +13,20 @@ import React, {
 
 export default class extends Component {
   
-  goMenuItem(tabName) {
-    this.props.goMenuItem(tabName);
+  goMenuItem(tabName, isTop) {
+    this.props.goMenuItem(tabName, isTop);
   }
 
   render() {
 
     return (
       <TouchableHighlight
-        onPress={this.goMenuItem.bind(this, this.props.name)}
-        underlayColor="#eee"
+        underlayColor='green'
+        onPress={this.goMenuItem.bind(this, this.props.name, this.props.isTop)}
       >
         <View style={styles.nav_item}>
           <Image source={this.props.source} style={styles.nav_icon} />
-          <Text style={styles.nav_link}>{this.props.name}</Text>
+          <Text style={[styles.nav_link]}>{this.props.name}</Text>
         </View>
       </TouchableHighlight>
     );
