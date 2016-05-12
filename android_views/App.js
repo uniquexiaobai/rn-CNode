@@ -31,6 +31,7 @@ export default class extends Component {
    */
   switchTab(tab) {
     this.setState({activeTab: tab});
+    alert(tab);
   }
 
   componentDidMount() {
