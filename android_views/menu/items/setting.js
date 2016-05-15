@@ -19,16 +19,29 @@ export default class extends Component {
   render() {
     return (
           
-        <View>
+        <View style={{flex: 1}}>
+        
           <Header
             title={'设置'}
             icon={require('../../img/back.png')}
             onIconClicked={Util.navigationBack.bind(this, this.props.navigator)}
           />
-          <Text>设置页面</Text>
+          
+          <View style={styles.setting}>
+            <Text style={{fontSize: 24}}>待完成...</Text>
+          </View>
+          
         </View>
       
     );
   }
   
 };
+
+const styles = StyleSheet.create({
+  setting: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

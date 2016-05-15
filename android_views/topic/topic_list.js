@@ -71,8 +71,7 @@ export default class extends Component {
   getData() {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     var that = this;
-    var url = 'http://cnodejs.org/api/v1/topics?tab=' + this.props.tab + '&page=1';
-    alert('hello');
+    var url = 'http://cnodejs.org/api/v1/topics?tab=' + this.props.activeTab + '&page=1';
 
     // 数据加载前 loading 动画
     this.setState({
@@ -100,9 +99,11 @@ export default class extends Component {
     });
   }
   
-  componentDidMount() [
+  componentDidMount() {
     this.getData();
-  ]
+  }
+  
+  
 
 };
 
