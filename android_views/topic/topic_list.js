@@ -14,6 +14,7 @@ import React, {
   ListView,
   ScrollView,
   ToastAndroid,
+  RefreshControl,
 } from 'react-native';
 
 export default class extends Component {
@@ -23,7 +24,8 @@ export default class extends Component {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       topicsSource: ds.cloneWithRows([]),
-      show: false
+      show: false,
+      isRefreshing: false
     };
   }
 
@@ -38,7 +40,22 @@ export default class extends Component {
           onIconClicked={this.props.openDrawerClick}
         />
 
-        <ScrollView style={styles.scrollView}>
+        <ScrollView 
+          style={styles.scrollView}
+          refreshControl={
+            <RefreshControl 
+              refreshing={this.state.refreshing}
+              size={RefreshControl.LARGE}
+              colors={['#77B800']}
+              onRefresh={() => {
+                this.setState({refreshing: true});
+                // ToastAndroid.show('hello world',ToastAndroid.SHORT);
+                this.getData(false);
+                this.setState({refreshing: false});
+              }}
+            />
+          }
+        >
           {
             this.state.show
             ?
@@ -68,15 +85,22 @@ export default class extends Component {
     );
   }
   
-  getData() {
+  /**
+   * [加载 topic 数据]
+   * @param  {Boolean} isLoading [当为false时，使用 RefreshControl 带的动画]
+   */
+  getData(isLoading) {
+    
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     var that = this;
     var url = 'http://cnodejs.org/api/v1/topics?tab=' + this.props.activeTab + '&page=1';
 
-    // 数据加载前 loading 动画
-    this.setState({
-      show: false
-    });
+    if(isLoading) {
+      // 数据加载前 loading 动画
+      this.setState({
+        show: false
+      });
+    }
 
     // get topics 信息
     Util.get(url, function(data) {
@@ -100,7 +124,7 @@ export default class extends Component {
   }
   
   componentDidMount() {
-    this.getData();
+    this.getData(true);
   }
   
   
