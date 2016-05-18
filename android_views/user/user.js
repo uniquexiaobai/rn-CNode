@@ -3,6 +3,7 @@
  */
 
 import UserInfo from './user_info';
+import UserContent from './user_content';
 import Util from '../common/util';
 
 import React, {
@@ -22,23 +23,44 @@ export default class extends Component {
 
     this.state = {
       user: {},
-      show: false
+      show: false,
+      tab: '最近回复',
+      page: 0
     };
 
+  }
+  
+  /**
+   * [switchTab 点击 tab 时触发]
+   * @param  {[type]} tabName [tab 选项卡名称]
+   */
+  switchTab(tabName, pageIndex) {
+    this.setState({tab: tabName, page: pageIndex});
+  }
+  
+  /**
+   * [switchPage 左右滑动切换 page]
+   * @param  {[type]} page [page index]
+   */
+  switchPage(page) {
+    const tabNames = ['最近回复', '最新发布', '话题收藏'];  
+    this.setState({tab: tabNames[page], page: page});
   }
 
   render() {
     return (
 
-      <View>
+      <View style={{flex: 1}}>
+      
         {
           this.state.show
           ?
             <UserInfo user={this.state.user} navigationBack={Util.navigationBack.bind(this, this.props.navigator)}/>
           : Util.loading
         }
-        <Text>用户详情页</Text>
-        <Text>{this.props.author_id}</Text>
+        
+        <UserContent page={this.state.page} tab={this.state.tab} switchPage={this.switchPage.bind(this)} switchTab={this.switchTab.bind(this)}/>
+        
       </View>
 
     );

@@ -18,11 +18,6 @@ import React , {
 
 export default class extends Component {
   
-  // 用浏览器打开外部链接
-  openExternalLink(url) {
-    Linking.openURL(url).catch(err => console.error('An error occurred', err));
-  }
-  
   render() {
     return (
           
@@ -41,7 +36,7 @@ export default class extends Component {
             <TouchableHighlight
               style={[styles.about_item, {borderTopWidth: 1}]}
               underlayColor='#E1E1E1'
-              onPress={this.openExternalLink.bind(this, 'https://github.com/uniquexiaobai/rn-CNode')}
+              onPress={Util.openExternalLink.bind(this, 'https://github.com/uniquexiaobai/rn-CNode')}
             >
               <View>
                 <Text style={styles.item_title}>项目开源地址</Text>
@@ -52,7 +47,7 @@ export default class extends Component {
             <TouchableHighlight
               style={styles.about_item}
               underlayColor='#E1E1E1'
-              onPress={this.openExternalLink.bind(this, 'https://cnodejs.org/about')}
+              onPress={Util.openExternalLink.bind(this, 'https://cnodejs.org/about')}
             >
               <View>
                 <Text style={styles.item_title}>关于CNode社区</Text>
@@ -63,7 +58,7 @@ export default class extends Component {
             <TouchableHighlight
               style={styles.about_item}
               underlayColor='#E1E1E1'
-              onPress={this.openExternalLink.bind(this, 'https://github.com/uniquexiaobai')}
+              onPress={Util.openExternalLink.bind(this, 'https://github.com/uniquexiaobai')}
             >
               <View>
                 <Text style={styles.item_title}>关于作者</Text>
@@ -74,7 +69,7 @@ export default class extends Component {
             <TouchableHighlight
               style={styles.about_item}
               underlayColor='#E1E1E1'
-              onPress={this.openExternalLink.bind(this, 'https://github.com/soliury/noder-react-native')}
+              onPress={Util.openExternalLink.bind(this, 'https://github.com/soliury/noder-react-native')}
             >
               <View>
                 <Text style={styles.item_title}>特别感谢</Text>

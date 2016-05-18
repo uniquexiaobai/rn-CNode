@@ -11,6 +11,7 @@ import React, {
   View,
   Image,
   TouchableHighlight,
+  Linking,
 } from 'react-native';
 
 export default class extends Component {
@@ -35,7 +36,12 @@ export default class extends Component {
           <View style={{alignItems: 'center'}}>
             <Image style={styles.user_avatar} source={{uri: this.props.user.avatar_url}} />
             <Text style={styles.user_name}>{this.props.user.loginname}</Text>
-            <Text style={styles.user_github}>github.com/{this.props.user.githubUsername}</Text>
+            <Text 
+              style={[styles.user_github]}
+              onPress={Util.openExternalLink.bind(this, 'https://github.com/' + this.props.user.githubUsername)}
+            >
+              https://github.com/{this.props.user.githubUsername}
+            </Text>
           </View>
 
           <View>
