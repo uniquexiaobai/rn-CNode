@@ -48,6 +48,7 @@ export default class extends Component {
   }
 
   render() {
+    
     return (
 
       <View style={{flex: 1}}>
@@ -59,7 +60,7 @@ export default class extends Component {
           : Util.loading
         }
         
-        <UserContent page={this.state.page} tab={this.state.tab} switchPage={this.switchPage.bind(this)} switchTab={this.switchTab.bind(this)}/>
+        <UserContent user={this.state.user}  page={this.state.page} tab={this.state.tab} switchPage={this.switchPage.bind(this)} switchTab={this.switchTab.bind(this)}/>
         
       </View>
 

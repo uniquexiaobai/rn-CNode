@@ -12,6 +12,29 @@ import React, {
 
 export default {
   
+  // 格式化时间，返回时间差
+  getTimeDistance(data) {
+    
+    // 获取时间差
+    var time = Date.now() - Date.parse(data);
+
+    if(Math.floor(time / 604800000)) {
+      return Math.floor(time / 604800000) + '周前'
+    }
+    if(Math.floor(time / 86400000)) {
+      return Math.floor(time / 86400000) + '天前'
+    }
+    if(Math.floor(time / 3600000)) {
+      return Math.floor(time / 3600000) + '小时前'
+    }
+    if(Math.floor(time / 60000)) {
+      return Math.floor(time / 60000) + '分钟前'
+    }
+
+    return '刚刚';
+    
+  },
+  
   // 用浏览器打开外部链接
   openExternalLink(url) {
     Linking.openURL(url).catch(err => console.error('An error occurred', err));

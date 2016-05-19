@@ -2,6 +2,9 @@
  * 用户动态列表
  */
 
+import TopicList from './topic_list';
+import Util from '../common/util';
+
 import React, {
   Component,
   StyleSheet,
@@ -26,7 +29,6 @@ export default class extends Component {
   render() {
     
     const tabNames = ['最近回复', '最新发布', '话题收藏'];       // tab 数组
-    
     var that = this;
     
     // 生成 tabs 视图的方法
@@ -48,28 +50,26 @@ export default class extends Component {
     }
     
     return (
-      
       <View style={{flex: 1}}>
         
         <View style={styles.user_content_tab}>
           {tabs()}
         </View>
         
-        <ScrollView>
+        <ScrollView style={{flex: 1}}>
           <ViewPagerAndroid 
-            initialPage={this.props.page}
+            initialPage={0}
             ref={(scrollView) => {this.scrollView = scrollView}}
             onPageSelected={this.switchPage.bind(this)}
-            style={{height: 200, backgroundColor: '#ccc'}}
+            style={{height: Util.size.height - 60, backgroundColor: '#E8E8E8'}}
           >
-            <View><Text>page1</Text></View>
+            <View><TopicList user={this.props.user}/></View>
             <View><Text>page2</Text></View>
             <View><Text>page3</Text></View>
           </ViewPagerAndroid>
         </ScrollView>  
       
       </View>
-      
     );
   }
   
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     paddingBottom: 13,
     borderBottomWidth: 2,
-    borderBottomColor: '#fff',
+    borderBottomColor: '#333',
     alignItems: 'center',
     justifyContent: 'center',
   },
