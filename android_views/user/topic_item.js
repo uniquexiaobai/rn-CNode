@@ -3,6 +3,8 @@
  */
 
 import Util from '../common/util';
+import TopicDetail from '../topic/topic_detail';
+import User from './user';
 
  import React, {
    Component,
@@ -15,6 +17,28 @@ import Util from '../common/util';
  
  export default class extends Component {
    
+   // 切换路由到 user 详情页
+   goUserDetail(name) {
+     this.props.navigator.push({
+       component: User,
+       passProps: {
+         author_name: name
+       }
+     });
+   }
+   
+   // 切换路由到 topic 详情页
+   goTopicDetail(id) {
+     if(this.props.navigator) {
+       this.props.navigator.push({
+         component: TopicDetail,
+         passProps: {
+           topic_id: id
+         }
+       });
+     }
+   }
+   
    render() {
      
      var topic = this.props.topic;
@@ -23,7 +47,7 @@ import Util from '../common/util';
        
        <TouchableHighlight
          underlayColor='#E1E1E1'
-         onPress={() => {alert('topic item')}}
+         onPress={this.goTopicDetail.bind(this, topic.id)}
          style={{backgroundColor: '#fff'}}
        >
  
@@ -31,7 +55,7 @@ import Util from '../common/util';
          
            <TouchableHighlight
              underlayColor='#fff'
-             onPress={() => {alert('author_avatar')}}
+             onPress={this.goUserDetail.bind(this, topic.author.loginname)}
            >
              <Image
                source={{uri: topic.author.avatar_url}}

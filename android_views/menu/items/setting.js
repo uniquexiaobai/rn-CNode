@@ -3,7 +3,7 @@
  */
 
 import Header from '../../common/header';
-import Util from '../../common/util';
+import NavUtil from '../../common/nav_util';
 
 import React , {
   Component,
@@ -24,7 +24,7 @@ export default class extends Component {
           <Header
             title={'设置'}
             icon={require('../../img/back.png')}
-            onIconClicked={Util.navigationBack.bind(this, this.props.navigator)}
+            onIconClicked={NavUtil.navigationBack.bind(this, this.props.navigator)}
           />
           
           <View style={styles.setting}>

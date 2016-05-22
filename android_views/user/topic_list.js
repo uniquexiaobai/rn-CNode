@@ -15,11 +15,11 @@ export default class extends Component {
   
   render() {
     
-    // alert(this.props.user.recent_topics);
     var topics = null;
-    if(this.props.user.recent_replies !== undefined) {
-      topics = this.props.user.recent_replies.map(function(item, index) {
-        return <TopicItem key={'user_topic_item' + index} topic={item} />;
+    if(this.props.topicList) {
+      const that = this;
+      topics = this.props.topicList.map(function(item, index) {
+        return <TopicItem navigator={that.props.navigator ? that.props.navigator : false} key={'topicList' + index} topic={item} />;
       })
     }
     

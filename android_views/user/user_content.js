@@ -17,11 +17,13 @@ import React, {
 
 export default class extends Component {
   
+  // 点击tab翻页处理事件
   switchTab(tab, page) {
     this.props.switchTab(tab, page);
     this.scrollView.setPage(this.props.page);
   }
   
+  // 滑动翻页处理事件
   switchPage(e) {
     this.props.switchPage(e.nativeEvent.position);
   }
@@ -63,8 +65,8 @@ export default class extends Component {
             onPageSelected={this.switchPage.bind(this)}
             style={{height: Util.size.height - 60, backgroundColor: '#E8E8E8'}}
           >
-            <View><TopicList user={this.props.user}/></View>
-            <View><Text>page2</Text></View>
+            <View><TopicList navigator={this.props.navigator ? this.props.navigator : false} topicList={this.props.user.recent_replies || false}/></View>
+            <View><TopicList navigator={this.props.navigator ? this.props.navigator : false} topicList={this.props.user.recent_topics || false}/></View>
             <View><Text>page3</Text></View>
           </ViewPagerAndroid>
         </ScrollView>  

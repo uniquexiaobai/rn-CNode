@@ -60,7 +60,7 @@ export default class extends Component {
           : Util.loading
         }
         
-        <UserContent user={this.state.user}  page={this.state.page} tab={this.state.tab} switchPage={this.switchPage.bind(this)} switchTab={this.switchTab.bind(this)}/>
+        <UserContent navigator={this.props.navigator ? this.props.navigator : false} user={this.state.user} page={this.state.page} tab={this.state.tab} switchPage={this.switchPage.bind(this)} switchTab={this.switchTab.bind(this)}/>
         
       </View>
 
