@@ -3,6 +3,9 @@
  */
 
 import Util from '../common/util';
+import NavUtil from '../common/nav_util';
+import TopicDetail from '../topic/topic_detail';   // 话题详情
+import User from '../user/user';   // 用户详情
 
 import React, {
   Component,
@@ -40,7 +43,7 @@ export default class extends Component {
 
       <TouchableHighlight
         underlayColor='#E1E1E1'
-        onPress={this.props.goTopicDetail.bind(this, this.props.topic.id)}
+        onPress={NavUtil.goTopicDetail.bind(this, this.props.navigator, TopicDetail, this.props.topic.id)}
       >
         <View style={styles.topic_item}>
 
@@ -52,7 +55,7 @@ export default class extends Component {
           <View style={styles.topic_item_bottom}>
             <TouchableHighlight
               underlayColor='#fff'
-              onPress={this.props.goUserDetail.bind(this, this.props.topic.author.loginname)}
+              onPress={NavUtil.goUserDetail.bind(this, this.props.navigator, User, this.props.topic.author.loginname)}
             >
               <Image
                 source={{uri: this.props.topic.author.avatar_url}}

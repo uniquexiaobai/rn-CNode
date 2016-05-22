@@ -2,6 +2,8 @@
  * 话题详情页 - 正文
  */
 import Util from '../common/util';
+import NavUtil from '../common/nav_util';
+import User from '../user/user';                // 用户详情页
 
 import React, {
   Component,
@@ -39,7 +41,7 @@ export default class extends Component {
 
                 <TouchableHighlight
                   underlayColor='#fff'
-                  onPress={this.props.goUserDetail.bind(this, this.state.topic.author.loginname)}
+                  onPress={NavUtil.goUserDetail.bind(this, this.props.navigator, User, this.state.topic.author.loginname)}
                 >
                   <Image
                     source={{uri: this.state.topic.author.avatar_url}}

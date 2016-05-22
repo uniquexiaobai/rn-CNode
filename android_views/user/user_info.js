@@ -3,6 +3,7 @@
  */
 
 import Util from '../common/util';
+import NavUtil from '../common/nav_util';
 
 import React, {
   Component,
@@ -27,7 +28,7 @@ export default class extends Component {
             <TouchableHighlight
               underlayColor="#6C6A67"
               style={{borderRadius: 20, padding: 5}}
-              onPress={this.props.navigationBack}
+              onPress={NavUtil.navigationBack.bind(this, this.props.navigator)}
             >
               <Image style={styles.toolbar_icon} source={require('../img/back.png')} />
             </TouchableHighlight>
@@ -38,7 +39,7 @@ export default class extends Component {
             <Text style={styles.user_name}>{this.props.user.loginname}</Text>
             <Text 
               style={[styles.user_github]}
-              onPress={Util.openExternalLink.bind(this, 'https://github.com/' + this.props.user.githubUsername)}
+              onPress={NavUtil.openExternalLink.bind(this, 'https://github.com/' + this.props.user.githubUsername)}
             >
               https://github.com/{this.props.user.githubUsername}
             </Text>

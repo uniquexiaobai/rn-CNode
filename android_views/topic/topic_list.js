@@ -79,8 +79,7 @@ export default class extends Component {
     return (
       <TopicItem
         topic={topic}
-        goTopicDetail={this.props.goTopicDetail}
-        goUserDetail={this.props.goUserDetail}
+        navigator={this.props.navigator ? this.props.navigator : false}
       />
     );
   }

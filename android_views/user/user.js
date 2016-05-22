@@ -56,7 +56,7 @@ export default class extends Component {
         {
           this.state.show
           ?
-            <UserInfo user={this.state.user} navigationBack={Util.navigationBack.bind(this, this.props.navigator)}/>
+            <UserInfo user={this.state.user} navigator={this.props.navigator ? this.props.navigator : false} />
           : Util.loading
         }
         

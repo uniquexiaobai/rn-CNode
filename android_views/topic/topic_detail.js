@@ -3,10 +3,11 @@
  */
 
 import Util from '../common/util';
+import NavUtil from '../common/nav_util';
 import Header from '../common/header';
 import DetailContent from './detail_content';
 import DetailComment from './detail_comment';
-import User from '../user/user';                // 用户详情页
+
 
 import React, {
   Component,
@@ -19,16 +20,6 @@ import React, {
 
 export default class extends Component {
 
-  // 切换路由到 user 详情页
-  goUserDetail(name) {
-    this.props.navigator.push({
-      component: User,
-      passProps: {
-        author_name: name
-      }
-    });
-  }
-
   render() {
     return (
       <View style={{flex: 1}}>
@@ -36,14 +27,14 @@ export default class extends Component {
         <Header
           title={'话题'}
           icon={require('../img/back.png')}
-          onIconClicked={Util.navigationBack.bind(this, this.props.navigator)}
+          onIconClicked={NavUtil.navigationBack.bind(this, this.props.navigator)}
         />
 
         <ScrollView style={styles.scrollView}>
 
           <DetailContent
             topic_id={this.props.topic_id}
-            goUserDetail={this.goUserDetail.bind(this)}
+            navigator={this.props.navigator ? this.props.navigator : false}
           />
 
           <DetailComment
