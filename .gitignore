@@ -39,3 +39,14 @@ buck-out/
 android/app/libs
 android/keystores/debug.keystore
 node_modules
+.sync/*
+
+.me_configs.data
+
+.z_sync_configs.data
+
+sync_changes.log
+
+sync_hook.script
+
+**/.Archive

@@ -70,6 +70,17 @@ export default class extends Component {
             <TouchableHighlight
               style={styles.about_item}
               underlayColor='#E1E1E1'
+              onPress={NavUtil.openExternalLink.bind(this, 'http://weibo.com/u/5332095066')}
+            >
+              <View>
+                <Text style={styles.item_title}>作者微博</Text>
+                <Text style={styles.item_content}>http://weibo.com/u/5332095066</Text>
+              </View>
+            </TouchableHighlight>
+            
+            <TouchableHighlight
+              style={styles.about_item}
+              underlayColor='#E1E1E1'
               onPress={NavUtil.openExternalLink.bind(this, 'https://github.com/soliury/noder-react-native')}
             >
               <View>
@@ -92,20 +103,23 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   cnode_logo: {
-    width: Util.size.width,
+    width: Util.size.width - 4,
+    marginLeft: 2,
   },
   about_item: {
     padding: 15,
+    paddingTop: 10,
+    paddingBottom: 10,
     borderBottomWidth: 1,
     borderColor: '#EBEBEB',
   },
   item_title: {
     color: '#282828',
-    fontSize: 17,
+    fontSize: 16,
     marginBottom: 3,
   },
   item_content: {
     color: '#858585',
-    fontSize: 15,
+    fontSize: 14,
   },
 });
