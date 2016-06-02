@@ -5,4 +5,4 @@ CNode社区客户端 by React Native
 
 ## 完成中...
 
-![](./screenshot/CNode.gif)
+![](./screenshot/CNode1.gif)
