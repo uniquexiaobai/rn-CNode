@@ -30,7 +30,9 @@ export default class extends Component {
           onIconClicked={NavUtil.navigationBack.bind(this, this.props.navigator)}
         />
 
-        <ScrollView style={styles.scrollView}>
+        <ScrollView 
+          style={styles.scrollView}
+        >
 
           <DetailContent
             topic_id={this.props.topic_id}
@@ -52,7 +54,7 @@ export default class extends Component {
 const styles = StyleSheet.create({
 
   scrollView: {
-    height: Util.size.height - 80,
+    flex: 1,
     width: Util.size.width,
   }
 

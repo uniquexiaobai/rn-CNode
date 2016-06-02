@@ -14,7 +14,7 @@ export default class extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{backgroundColor: 'blue', height: 150}}>
         <Text>评论页</Text>
       </View>
     );

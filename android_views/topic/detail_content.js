@@ -28,56 +28,60 @@ export default class extends Component {
   render() {
 
     return (
-      <View style={{flex: 1}}>
-
+      <View style={{padding: 15, flex: 1}}>
+      
         {
           this.state.show
           ?
             <View style={styles.detail_content}>
+            
+              <View style={styles.detail_content_header}>
+              
+                <Text style={styles.topic_title}>{this.state.topic.title}</Text>
 
-              <Text style={styles.topic_title}>{this.state.topic.title}</Text>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
 
-              <View style={styles.Section2}>
+                  <TouchableHighlight
+                    underlayColor='#fff'
+                    onPress={NavUtil.goUserDetail.bind(this, this.props.navigator, User, this.state.topic.author.loginname)}
+                  >
+                    <Image
+                      source={{uri: this.state.topic.author.avatar_url}}
+                      style={styles.author_avatar}
+                    />
+                  </TouchableHighlight>
 
-                <TouchableHighlight
-                  underlayColor='#fff'
-                  onPress={NavUtil.goUserDetail.bind(this, this.props.navigator, User, this.state.topic.author.loginname)}
-                >
-                  <Image
-                    source={{uri: this.state.topic.author.avatar_url}}
-                    style={styles.author_avatar}
-                  />
-                </TouchableHighlight>
-
-                <View style={styles.topic_item_center}>
-                  <View style={styles.detail_center}>
-                    <Text style={styles.topic_tab}>置顶</Text>
-                    <Text style={styles.author_name}>{this.state.topic.author.loginname}</Text>
+                  <View>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                      <Text style={styles.topic_tab}>置顶</Text>
+                      <Text style={styles.author_name}>{this.state.topic.author.loginname}</Text>
+                    </View>
+                    <Text style={styles.topic_pv}>2周前创建 * {this.state.topic.visit_count}次浏览</Text>
                   </View>
-                  <Text style={styles.topic_pv}>2周前创建 * {this.state.topic.visit_count}次浏览</Text>
+
+                  <Image
+                    source={require('../img/good.png')}
+                    style={styles.detail_good}
+                  />
+                
                 </View>
-
-                <Image
-                  source={require('../img/good.png')}
-                  style={styles.detail_good}
-                />
-
+            
               </View>
 
-              <View style={{flex: 1, backgroundColor: 'red', }}>
+              <View style={{flex: 1}}>
               <WebView
                 startInLoadingState={false}
-                html={this.state.topic.content}
-                style={styles.topic_content}
+                source={{html: this.state.topic.content}}
+                style={styles.topic_webview}
+                automaticallyAdjustContentInsets = {true}
               >
               </WebView>
-              </View>
-
+              </View>  
             </View>
           :
             Util.loading
         }
-
+      
       </View>
     );
 
@@ -121,10 +125,15 @@ export default class extends Component {
 };
 
 const styles = StyleSheet.create({
+  
   detail_content: {
     borderWidth: 1,
-    borderColor: 'red',
-    padding: 15,
+    borderColor: 'yellow',
+  },
+  
+  detail_content_header: {
+    borderWidth: 1, 
+    borderColor: 'green'
   },
   topic_title: {
     color: '#2C2C2C',
@@ -133,21 +142,11 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     fontWeight: 'bold',
   },
-  Section2: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
   author_avatar: {
     height: 38,
     width: 38,
     borderRadius: 19,
     marginRight: 10,
-  },
-
-  detail_center: {
-    flexDirection: 'row',
-    alignItems: 'center',
   },
   topic_tab: {
     backgroundColor: '#eee',
@@ -168,7 +167,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontSize: 14,
   },
-
   detail_good: {
     position: 'absolute',
     right: 10,
@@ -177,9 +175,9 @@ const styles = StyleSheet.create({
     height: 19,
   },
 
-  topic_content: {
-    height: 350,
-    width: Util.size.width - 30,
+  topic_webview: {
+    height: 500,
+    width: Util.size.width,
   },
 
 });
